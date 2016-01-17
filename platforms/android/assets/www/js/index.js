@@ -35,12 +35,14 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
         if (window.datawedge) {
+          alert('datawedge found.');
          datawedge.start(); //uses default
          //datawedge.start("com.yourintent.whatever_you_configured_to_broadcast_in_default_profile");
       }
       datawedge.registerForBarcode(function(data){
            var labelType = data.type,
                barcode   = data.barcode;
+               alert('scanning started');
 
            alert("Barcode scanned.  Label type is: " + labelType + ", " + barcode);
 

@@ -33,7 +33,6 @@ import org.xwalk.core.XWalkView;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import android.util.Log;
 
 public class XWalkCordovaResourceClient extends XWalkResourceClient {
 
@@ -94,16 +93,7 @@ public class XWalkCordovaResourceClient extends XWalkResourceClient {
 
     @Override
     public boolean shouldOverrideUrlLoading(XWalkView view, String url) {
-         if(url.equalsIgnoreCase("membery://index")) {
-                    Log.d("DEBUG", url);
-
-                    view.load("file:///android_asset/www/index.html", null);
-
-                    return true;
-                } else {
-                    return parentEngine.client.onNavigationAttempt(url);
-                }
-        
+        return parentEngine.client.onNavigationAttempt(url);
     }
 
 
@@ -135,4 +125,3 @@ public class XWalkCordovaResourceClient extends XWalkResourceClient {
         }
     }
 }
-

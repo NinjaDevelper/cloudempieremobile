@@ -18,9 +18,8 @@
     },
     "cordova-plugin-crosswalk-webview": {
         "source": {
-            "type": "git",
-            "url": "https://github.com/tomatell/cordova-plugin-crosswalk-webview.git",
-            "subdir": "."
+            "type": "registry",
+            "id": "cordova-plugin-crosswalk-webview"
         },
         "is_top_level": true,
         "variables": {}
