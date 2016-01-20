@@ -26,7 +26,17 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        //document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener("deviceready", this.onDeviceReady, function(){ 
+          datawedge.registerForBarcode(function(data){
+           var labelType = data.type,
+               barcode   = data.barcode;
+            alert("Barcode scanned.  Label type is: " + labelType + ", " + barcode);
+           console.log("Barcode scanned.  Label type is: " + labelType + ", " + barcode);
+
+           //TODO: handle barcode/label type
+           });
+       });
     },
     // deviceready Event Handler
     //
@@ -39,15 +49,6 @@ var app = {
          datawedge.start(); //uses default
          //datawedge.start("com.yourintent.whatever_you_configured_to_broadcast_in_default_profile");
       }
-      datawedge.registerForBarcode(function(data){
-           var labelType = data.type,
-               barcode   = data.barcode;
-               alert('scanning started');
-
-           alert("Barcode scanned.  Label type is: " + labelType + ", " + barcode);
-
-           //TODO: handle barcode/label type
-       });
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
